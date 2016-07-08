@@ -16,7 +16,6 @@ body {
      text-align: center;
 }
 #coffeecup {
-     background-image: url(../images/coffee.jpg);
      background-image: url('../images/coffee.jpg');
      background-size: cover;
      background-position: 80% 75%;
