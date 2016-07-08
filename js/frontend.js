@@ -29,8 +29,30 @@ myApp.controller('MainController', function($scope, $http){    /* not sure if ro
      $scope.myFunction = function(){
           /* function logic here */
      };
-     $http.get(API + '/options')
-      .success(function(data) {
-            console.log("Connected to backend from frontend using http request");
-      });
+
+
 });
+
+myApp.controller("OptionsController", function($scope, $http){
+     $http.get(API + '/options')
+     .success(function(data) {
+          console.log("Connected to backend from frontend using http request");
+          $scope.grindTypes = data;
+          console.log($scope.grindTypes);
+     });
+});
+
+// angular.module('grind-type', [])
+// .controller('GrindController', ['$scope', function($scope) {
+//      $scope.data = {
+//           model: null,
+//           availableOptions: [
+//                {value: 'myString', name: 'string'},
+//                {value: 1, name: 'integer'},
+//                {value: true, name: 'boolean'},
+//                {value: null, name: 'null'},
+//                {value: {prop: 'value'}, name: 'object'},
+//                {value: ['a'], name: 'array'}
+//           ]
+//      };
+// }]);

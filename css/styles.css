@@ -17,8 +17,11 @@ body {
 }
 #coffeecup {
      background-image: url(../images/coffee.jpg);
-     background-size: 100% 100%;
-     /*background-repeat: no-repeat;*/
+     background-image: url('../images/coffee.jpg');
+     background-size: cover;
+     background-position: 80% 75%;
+     min-height: 450px;
+     padding: 100px 30px 0 50px;
 }
 #slogan {
      padding-top: 10%;
@@ -67,6 +70,14 @@ ol li ul li {
      padding-bottom: 15%;
 }
 
+#btn_get_started {
+     background-color: #1D4942;
+     color: white;
+}
 /*div {
 border: 1px solid black;
 }*/
+
+.fit-image{
+     width: 100%;
+}

@@ -1,1 +1,50 @@
-<h2>Options</h2>
+<div class="row" id="Package">
+
+     <div class="col-sm-6 center_text"><img class = "fit-image" src="images/solo-drinker.jpg" alt="" />
+
+
+          <div>
+               <form name="grindForm">
+                        <label for="grind-type"> ngvalue select: </label>
+                    <select name="singleSelect" ng-model="coffeeOption">
+                         <option ng-repeat="option in grindTypes" value="{{option}}">
+                              {{option}}
+                         </option>
+                    </select><br>
+               </form>
+                 <pre>model = {{data.model | json}}</pre><br/>
+               <p class="center_text"><button class="btn">Order</button></p>
+               </div>
+
+
+
+               <!-- <div ng-controller="ExampleController">
+                 <form name="myForm">
+                   <label for="ngvalueselect"> ngvalue select: </label>
+                   <select size="6" name="ngvalueselect" ng-model="data.model" multiple>
+                     <option ng-repeat="option in data.availableOptions" ng-value="option.value">{{option.name}}</option>
+                   </select>
+                 </form>
+                 <hr>
+                 <pre>model = {{data.model | json}}</pre><br/>
+               </div> -->
+
+
+
+               <div class="col-sm-6 center_text"><img class = "fit-image" src="images/coffee-drinkers.jpg" alt="" />
+                    <form name="grindForm">
+                         <label for="singleSelect"> Single select: </label><br>
+                         <select name="singleSelect" ng-model="groupOptions">
+                              <option value="Extra Coarse">Extra Coarse</option>
+                              <option value="Coarse">Coarse</option>
+                              <option value="Medium Coarse">Medium Coarse</option>
+                              <option value="Medium">Medium</option>
+                              <option value="Medium Fine">Medium Fine</option>
+                              <option value="Fine">Fine</option>
+                              <option value="Extra Fine">Extra Fine</option>
+                         </select><br>
+                    </form>
+
+               </div>
+          </div>
+</div>
