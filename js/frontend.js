@@ -32,8 +32,16 @@ myApp.controller('MainController', function($scope, $http){    /* not sure if ro
 });
 
 myApp.controller("OptionsController", function($scope, $http, $location){
-     $scope.goDelivery = function() {
-          console.log("print Delivery");
+     $scope.goDelivery = function(packageType, optionChosen) {
+          console.log('the ' + optionChosen + ' was chosen');
+          if(packageType === 'individual') {
+               console.log('the individual option was chosen');
+          } else if(packageType === 'family') {
+               console.log('the family option was chosen');
+          } else {
+               console.log('unknown error occured.  unknown if individual or family option was chosen');
+          }
+          console.log('should now be directed to delivery page...');
           $location.path('/deliveries');
      };
      $http.get(API + '/options')
@@ -44,7 +52,7 @@ myApp.controller("OptionsController", function($scope, $http, $location){
      });
 });
 
-myApp.controller("DelieveriesController", function($scope, $http){
+myApp.controller("DeliveriesController", function($scope, $http){
      $scope.pushShipping = function() {
           console.log("print Delivery");
           deliveryOptions.push();

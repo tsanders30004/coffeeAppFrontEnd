@@ -6,16 +6,16 @@
           <div>
                <form name="grindForm">
                     <label for="grind-type">Grind Type:</label>
-                    <select name="individualPackage" ng-model="coffeeOption">
-                         <option ng-repeat="option in grindTypes" value="{{option}}">
-                              {{option}}
+                    <select name="individualPackage" ng-model="coffeeOptionIndividual">
+                         <option ng-repeat="grindType in grindTypes" value="{{grindType}}">
+                              {{grindType}}
                          </option>
                     </select>
                     <br>
                </form>
 
                <p class="center_text">
-                    <button ng-click="goDelivery()" class="btn">Order</button>
+                    <button ng-click="goDelivery('individual', coffeeOptionIndividual)" class="btn btn-success">Order</button>
                </p>
           </div>
      </div>
@@ -27,16 +27,16 @@
           <div>
                <form name="grindForm">
                     <label for="grind-type">Grind Type:</label>
-                    <select name="familyPackage" ng-model="coffeeOption">
-                         <option ng-repeat="option in grindTypes" value="{{option}}">
-                              {{option}}
+                    <select name="familyPackage" ng-model="coffeeOptionFamily">
+                         <option ng-repeat="grindType in grindTypes" value="{{grindType}}">
+                              {{grindType}}
                          </option>
                     </select>
                     <br>
                </form>
 
                <p class="center_text">
-                    <button ng-click="goDelivery()" class="btn">Order</button>
+                    <button ng-click="goDelivery('family', coffeeOptionFamily)" class="btn btn-success">Order</button>
                </p>
           </div>
      </div>
