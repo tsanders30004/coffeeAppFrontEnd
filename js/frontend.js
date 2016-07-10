@@ -1,5 +1,11 @@
-// This is to connect to backend
-var API = 'http://localhost:3000';
+/* Global Variables */
+
+var API = 'http://localhost:3000';      /* for connection to backend */
+
+var pkgAndOpt = {                       /* used to store which option (indiv or family) and grinmd type were selected by the user */
+     package: '',                       /* is this the best place to store this variable - or should it go in the options controller? */
+     grindType: ''
+};
 
 var myApp = angular.module('myApp', ['ngRoute']);
 
@@ -36,11 +42,16 @@ myApp.controller("OptionsController", function($scope, $http, $location){
           console.log('the ' + optionChosen + ' was chosen');
           if(packageType === 'individual') {
                console.log('the individual option was chosen');
+               pkgAndOpt.package = packageType;
+               pkgAndOpt.grindType = optionChosen;
           } else if(packageType === 'family') {
                console.log('the family option was chosen');
+               pkgAndOpt.package = packageType;
+               pkgAndOpt.grindType = optionChosen;
           } else {
                console.log('unknown error occured.  unknown if individual or family option was chosen');
           }
+          console.log(pkgAndOpt);
           console.log('should now be directed to delivery page...');
           $location.path('/deliveries');
      };
