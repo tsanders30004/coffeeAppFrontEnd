@@ -7,6 +7,16 @@ var pkgAndOpt = {                       /* used to store which option (indiv or 
      grindType: ''
 };
 
+var deliveryAddress = {
+     fname:     "",
+     addr1:     "",
+     addr2:     "",
+     city:      "",
+     state:     "",
+     zip:       "",
+     delDate:    ""
+};
+
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(function($routeProvider) {
@@ -63,16 +73,28 @@ myApp.controller("OptionsController", function($scope, $http, $location){
      });
 });
 
-myApp.controller("DeliveriesController", function($scope, $http){
-     $scope.pushShipping = function() {
-          console.log("print Delivery");
-          deliveryOptions.push();
+myApp.controller("DeliveriesController", function($scope, $http, $location){
+     $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
+          deliveryAddress =
+          {
+               fname:     fname,
+               addr1:     addr1,
+               addr2:     addr2,
+               city:      city,
+               state:     state,
+               zip:       zip,
+               delDate:   delDate
+          };
+
+          console.log(deliveryAddress);
+          console.log('should now be directed to payments page...');
+          $location.path('/payments');
+
      };
+});
 
-     $http.post(API + '/deliveries')
-     .success(function(data) {
-          $scope.deliveryTypes = data;
-          console.log($scope.deliveryTypes);
-
-     });
+$http.post(API + '/deliveries')
+.success(function(data) {
+     $scope.deliveryTypes = data;
+     console.log($scope.deliveryTypes);
 });

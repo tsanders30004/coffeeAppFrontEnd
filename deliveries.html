@@ -1,27 +1,82 @@
-<h2>Delivery</h2>
-<form action="action_page.php">
-     <label for="shipping-type"> </label>
+<div class="row">
+     <div class="col-sm-12">
+          <h1>Please enter your shipping information:</h1>
+          <form>
+               <p>Full Name</p>
+               <input type="text" name="fname" ng-model="deliveryFullName">
 
-  Full Name:<br>
-  <input type="text" name="Full Name">
-  <br>
-  Address Line 1:<br>
-  <input type="text" name="Address Line 1">
-  <br>
-  Address Line 2:<br>
-  <input type="text" name="Address Line 2">
-  <br>
-  City:<br>
-  <input type="text" name="City">
-  <br>
-  State:<br>
-  <input type="text" name="State">
-  <br>
-  Zipcode:<br>
-  <input type="text" name="Zipcode">
-  <br>
-  Delivery Date:<br>
-  <input type="date" name="Delievery Date">
-  <br>
-  <input ng-click ="pushShipping()" type="submit" value="Submit">
-</form>
+               <p>Address Line 1</p>
+               <input type="text" name="addr1" ng-model="deliveryAddr1">
+
+               <p>Address Line 2</p>
+               <input type="text" name="addr2" ng-model="deliveryAddr2">
+
+               <p>City</p>
+               <input type="text" name="city" ng-mode="deliveryCity">
+
+               <p>State</p>
+               <select ng-model="deliveryState">
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <option value="CO">Colorado</option>
+                    <option value="CT">Connecticut</option>
+                    <option value="DE">Delaware</option>
+                    <option value="DC">District Of Columbia</option>
+                    <option value="FL">Florida</option>
+                    <option value="GA">Georgia</option>
+                    <option value="HI">Hawaii</option>
+                    <option value="ID">Idaho</option>
+                    <option value="IL">Illinois</option>
+                    <option value="IN">Indiana</option>
+                    <option value="IA">Iowa</option>
+                    <option value="KS">Kansas</option>
+                    <option value="KY">Kentucky</option>
+                    <option value="LA">Louisiana</option>
+                    <option value="ME">Maine</option>
+                    <option value="MD">Maryland</option>
+                    <option value="MA">Massachusetts</option>
+                    <option value="MI">Michigan</option>
+                    <option value="MN">Minnesota</option>
+                    <option value="MS">Mississippi</option>
+                    <option value="MO">Missouri</option>
+                    <option value="MT">Montana</option>
+                    <option value="NE">Nebraska</option>
+                    <option value="NV">Nevada</option>
+                    <option value="NH">New Hampshire</option>
+                    <option value="NJ">New Jersey</option>
+                    <option value="NM">New Mexico</option>
+                    <option value="NY">New York</option>
+                    <option value="NC">North Carolina</option>
+                    <option value="ND">North Dakota</option>
+                    <option value="OH">Ohio</option>
+                    <option value="OK">Oklahoma</option>
+                    <option value="OR">Oregon</option>
+                    <option value="PA">Pennsylvania</option>
+                    <option value="RI">Rhode Island</option>
+                    <option value="SC">South Carolina</option>
+                    <option value="SD">South Dakota</option>
+                    <option value="TN">Tennessee</option>
+                    <option value="TX">Texas</option>
+                    <option value="UT">Utah</option>
+                    <option value="VT">Vermont</option>
+                    <option value="VA">Virginia</option>
+                    <option value="WA">Washington</option>
+                    <option value="WV">West Virginia</option>
+                    <option value="WI">Wisconsin</option>
+                    <option value="WY">Wyoming</option>
+               </select>
+
+               <p>Zip Code</p>
+               <input type="text" name="zip" ng-model="deliveryZip">
+
+               <p>Delivery Date</p>
+               <input type="date" name="del_date" ng-model="deliveryDate">
+
+          </form>
+          <br>
+          <p><button ng-click="goPayment(deliveryFullName, deliveryAddr1, deliveryAddr2, deliveryCity, deliveryState, deliveryZip, deliveryDate)" class="btn btn-success">Submit</button></p>
+     </div>
+</div>
