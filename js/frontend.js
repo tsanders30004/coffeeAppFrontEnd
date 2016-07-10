@@ -3,10 +3,6 @@ var API = 'http://localhost:3000';
 
 var myApp = angular.module('myApp', ['ngRoute']);
 
-
-
-
-
 myApp.config(function($routeProvider) {
      $routeProvider
      .when('/', {
@@ -33,34 +29,11 @@ myApp.controller('MainController', function($scope, $http){    /* not sure if ro
      $scope.myFunction = function(){
           /* function logic here */
      };
-
-
 });
-
-
-//make a factory that saves the quantity and grindtype
-
-grindType.factory('postOrder', function() {
-     var theOrder;
-     return {
-          getOrder function(){
-               quantity: 1,
-               grindType: {{}}
-          }
-     });
-     // factory function body that constructs shinyNewServiceInstance
-     return shinyNewServiceInstance;
-});
-
-
-
 
 myApp.controller("OptionsController", function($scope, $http, $location){
      $scope.goDelivery = function() {
           console.log("print Delivery");
-
-
-
           $location.path('/deliveries');
      };
      $http.get(API + '/options')
@@ -68,16 +41,8 @@ myApp.controller("OptionsController", function($scope, $http, $location){
           console.log("Connected to backend from frontend using http request");
           $scope.grindTypes = data;
           console.log($scope.grindTypes);
-
      });
 });
-
-
-
-
-
-
-
 
 myApp.controller("DelieveriesController", function($scope, $http){
      $scope.pushShipping = function() {

@@ -1,38 +1,43 @@
-<div class="row" id="Package">
-
-
-     <!-- Individual Package form -->
-     <div class="col-sm-6 center_text"><img class = "fit-image" src="images/solo-drinker.jpg" alt="" />
+<!-- Individual -->
+<div class="row">
+     <div class="col-sm-6 center_text">
+          <h1>Individual Package</h1>
+          <img class ="fit-image" src="images/solo-drinker.jpg" alt="">
           <div>
                <form name="grindForm">
-                    <label for="grind-type"> Grind type: </label>
+                    <label for="grind-type">Grind Type:</label>
                     <select name="individualPackage" ng-model="coffeeOption">
                          <option ng-repeat="option in grindTypes" value="{{option}}">
                               {{option}}
                          </option>
-                    </select><br>
+                    </select>
+                    <br>
                </form>
-               <!-- <pre>model = {{data.model | json}}</pre><br/> -->
-               <p class="center_text"><button ng-click="goDelivery()" class="btn">Order</button></p>
-          </div>
 
-
-
-
-
-          <!-- Group Package form -->
-          <div class="col-sm-6 center_text"><img class = "fit-image" src="images/coffee-drinkers.jpg" alt="" />
-               <div>
-                    <form name="grindForm">
-                         <label for="grind-type"> Grind type: </label>
-                         <select name="familyPackage" ng-model="coffeeOption">
-                              <option ng-repeat="option in grindTypes" value="{{option}}">
-                                   {{option}}
-                              </option>
-                         </select><br>
-                    </form>
-                    <!-- <pre>model = {{data.model | json}}</pre><br/> -->
-                    <p class="center_text"><button ng-click="goDelivery()" class="btn">Order</button></p>               </div>
-               </div>
+               <p class="center_text">
+                    <button ng-click="goDelivery()" class="btn">Order</button>
+               </p>
           </div>
      </div>
+
+     <!-- Family -->
+     <div class="col-sm-6 center_text">
+          <h1>Family Package</h1>
+          <img class="fit-image" src="images/coffee-drinkers.jpg" alt="">
+          <div>
+               <form name="grindForm">
+                    <label for="grind-type">Grind Type:</label>
+                    <select name="familyPackage" ng-model="coffeeOption">
+                         <option ng-repeat="option in grindTypes" value="{{option}}">
+                              {{option}}
+                         </option>
+                    </select>
+                    <br>
+               </form>
+
+               <p class="center_text">
+                    <button ng-click="goDelivery()" class="btn">Order</button>
+               </p>
+          </div>
+     </div>
+</div>
