@@ -91,10 +91,11 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
           $location.path('/payments');
 
      };
-});
 
-$http.post(API + '/deliveries')
-.success(function(data) {
-     $scope.deliveryTypes = data;
-     console.log($scope.deliveryTypes);
+     $http.post(API + '/deliveries')
+     .success(function(data) {
+          $scope.deliveryTypes = data;
+          console.log($scope.deliveryTypes);
+     });
+
 });
