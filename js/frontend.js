@@ -92,7 +92,32 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
 
      };
 
-     $http.post(API + '/deliveries')
+     $http.post(API + '/deliveries')                             /* should this be here? */
+     .success(function(data) {
+          $scope.deliveryTypes = data;
+          console.log($scope.deliveryTypes);
+     });
+
+});
+
+/* start the payment controller here... */
+myApp.controller("PaymentsController", function($scope, $http, $location){      /* do I really need $location? */
+     // $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
+     //      deliveryAddress =
+     //      {
+     //           fname:     fname,
+     //           addr1:     addr1,
+     //           addr2:     addr2,
+     //           city:      city,
+     //           state:     state,
+     //           zip:       zip,
+     //           delDate:   delDate
+     //      };
+
+     console.log('should now be directed to the thankyou page...');
+     // $location.path('/payments');
+
+     $http.post(API + '/thankyou')                             /* should this be here? */
      .success(function(data) {
           $scope.deliveryTypes = data;
           console.log($scope.deliveryTypes);
