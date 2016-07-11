@@ -2,9 +2,11 @@
 
 var API = 'http://localhost:3000';      /* for connection to backend */
 
-var pkgAndOpt = {                       /* used to store which option (indiv or family) and grinmd type were selected by the user */
-     package: '',                       /* is this the best place to store this variable - or should it go in the options controller? */
-     grindType: ''
+var pkgAndOpt = {
+     package: '',
+     grindType: '',
+     qtyInPounds: 0.35,
+     costPerPound: 20
 };
 
 var deliveryAddress = {
@@ -122,7 +124,7 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
      // $location.path('/payments');
      $scope.deliveryAddress = deliveryAddress;
      $scope.pkgAndOpt = pkgAndOpt;
-
+     console.log($scope.deliveryAddress);
 
      $http.post(API + '/thankyou')                             /* should this be here? */
      .success(function(data) {

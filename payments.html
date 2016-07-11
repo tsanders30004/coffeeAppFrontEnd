@@ -33,7 +33,7 @@ var pkgAndOpt = {                       /* used to store which option (indiv or 
           <p>Coffee in Pounds</p>
      </div>
      <div class="col-sm-6">
-          <p>1</p>
+          <p>{{pkgAndOpt.qtyInPounds}}</p>
      </div>
 </div>
 
@@ -117,7 +117,7 @@ var pkgAndOpt = {                       /* used to store which option (indiv or 
           <p>Quantity</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{pkgAndOpt.qtyInPounds}} X ${{pkgAndOpt.costPerPound}} = ${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</p>
      </div>
 </div>
 
@@ -126,7 +126,7 @@ var pkgAndOpt = {                       /* used to store which option (indiv or 
           <p>Shipping</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>FREE!</p>
      </div>
 </div>
 
@@ -135,7 +135,7 @@ var pkgAndOpt = {                       /* used to store which option (indiv or 
           <p>Total</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</p>
      </div>
 </div>
 
