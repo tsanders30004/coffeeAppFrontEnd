@@ -126,6 +126,11 @@ Build a user login page. When the user submits the form, it will make a request 
 1. Take the token returned from the backend and save it in a cookie, using the $cookies service with $cookies.put(). It's up to you to choose the name to use for the cookie. See documentation: https://docs.angularjs.org/api/ngCookies/service/$cookies
 2. Redirect to the home page.
 
+
+
+
+
+
 ### Login Restrictions and Auto-Redirect
 
 Remember that in our wiki app, if the user tries to access an authenticated page, he gets redirected to the login page, and after he successfully logs in, he gets redirected back to where he intended to go. We will re-implement this same feature, but do it all in AngularJS instead.

@@ -16,10 +16,19 @@
                <input type="email" name="email" value= "example@email.com" ng-model="email">
                <br>
                <button ng-click = "registerUser()" class="btn succcess">Register User</button>
-
-
           </form>
           <br>
+
+          <div>
+               <p ng-show="loginStatus">Login Succeeded...  Please login here: {{loginStatus}}</p>
+
+               <a href="/login.html" ><button ng-show="loginStatus" class="btn succcess">Login here User</button> </a>
+          </div>
+
+          <div>
+               <p ng-show="loginStatus === false">Login Failed...  Please try again.{{loginStatus}}</p>
+          </div>
+
 
      </div>
 </div>

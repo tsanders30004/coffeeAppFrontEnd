@@ -46,6 +46,10 @@ myApp.config(function($routeProvider) {
      .when('/register', {
           controller: 'RegisterController',
           templateUrl: 'register.html'
+     })
+     .when('/login', {
+          controller: 'LoginController',
+          templateUrl: 'login.html'
      });
 });
 
@@ -187,11 +191,51 @@ myApp.controller("RegisterController", function($scope, $http, $location){
           .success(function(data) {
                console.log("in signup function...");
                console.log(data);
+               $scope.loginStatus = true;
+               console.log($scope.loginStatus);
           })
           .error(function (errorData, status) {
                console.log('user already taken?');
                console.log(errorData);
                console.log('test...' + status);
+               $scope.loginStatus = false;
+               console.log($scope.loginStatus);
+          });
+     };
+
+});
+
+
+
+
+
+
+
+myApp.controller("LoginController", function($scope, $http, $cookies, $location){
+  var favoriteCookie = $cookies.get('');
+     $scope.loginUser = function() {
+          var data =
+          {
+               "_id": $scope.userName,
+               "password": $scope.password,
+
+          };
+
+
+          $http.post(API + '/login', data)
+          .success(function(data) {
+
+               $scope.loginStatus = true;
+               console.log($scope.loginStatus);
+               $cookies.put('token');
+               $location.path("/");
+          })
+          .error(function (errorData, status) {
+               console.log('user already taken?');
+               console.log(errorData);
+               console.log('test...' + status);
+               $scope.loginStatus = false;
+               console.log($scope.loginStatus);
           });
      };
 
