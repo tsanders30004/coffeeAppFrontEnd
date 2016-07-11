@@ -1,3 +1,9 @@
+var pkgAndOpt = {                       /* used to store which option (indiv or family) and grinmd type were selected by the user */
+     package: '',                       /* is this the best place to store this variable - or should it go in the options controller? */
+     grindType: ''
+};
+
+
 <div class="row">
      <div class="col-sm-12">
           <h1>Payment</h1>
@@ -9,7 +15,7 @@
           <p>Grind</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{pkgAndOpt.grindType}}</p>
      </div>
 </div>
 
@@ -18,7 +24,7 @@
           <p>Frequency of Delivery</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>Weekly</p>
      </div>
 </div>
 
@@ -27,7 +33,7 @@
           <p>Coffee in Pounds</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>1</p>
      </div>
 </div>
 
@@ -51,7 +57,7 @@
           <p>Address Line 1</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.addr1}}</p>
      </div>
 </div>
 
@@ -60,7 +66,7 @@
           <p>Address Line 2</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.addr2}}</p>
      </div>
 </div>
 
@@ -69,7 +75,7 @@
           <p>City</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.city}}</p>
      </div>
 </div>
 
@@ -78,7 +84,7 @@
           <p>State</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.state}}</p>
      </div>
 </div>
 
@@ -87,7 +93,7 @@
           <p>Zip Code</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.zip}}</p>
      </div>
 </div>
 
@@ -96,7 +102,7 @@
           <p>Delivery Date</p>
      </div>
      <div class="col-sm-6">
-          <p>XXXXX</p>
+          <p>{{deliveryAddress.delDate}}</p>
      </div>
 </div>
 

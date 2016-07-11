@@ -120,6 +120,9 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
 
      console.log('should now be directed to the thankyou page...');
      // $location.path('/payments');
+     $scope.deliveryAddress = deliveryAddress;
+     $scope.pkgAndOpt = pkgAndOpt;
+
 
      $http.post(API + '/thankyou')                             /* should this be here? */
      .success(function(data) {
