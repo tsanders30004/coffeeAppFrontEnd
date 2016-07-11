@@ -19,7 +19,7 @@ var deliveryAddress = {
      delDate:    ""
 };
 
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 
 myApp.config(function($routeProvider) {
      $routeProvider
@@ -205,37 +205,25 @@ myApp.controller("RegisterController", function($scope, $http, $location){
 
 });
 
+myApp.controller("LoginController", function($scope, $cookies, $http, $location){
 
-
-
-
-
-
-myApp.controller("LoginController", function($scope, $http, $cookies, $location){
-  var favoriteCookie = $cookies.get('');
      $scope.loginUser = function() {
+          var cookies = $cookies.get();
           var data =
           {
                "_id": $scope.userName,
                "password": $scope.password,
-
           };
-
-
+          console.log(data);
           $http.post(API + '/login', data)
           .success(function(data) {
-
-               $scope.loginStatus = true;
-               console.log($scope.loginStatus);
-               $cookies.put('token');
+               console.log(data);
+               $cookies.put('token', data.token);
                $location.path("/");
           })
           .error(function (errorData, status) {
-               console.log('user already taken?');
                console.log(errorData);
                console.log('test...' + status);
-               $scope.loginStatus = false;
-               console.log($scope.loginStatus);
           });
      };
 
