@@ -38,6 +38,14 @@ myApp.config(function($routeProvider) {
      .when('/payments', {
           controller: 'PaymentsController',
           templateUrl: 'payments.html'
+     })
+     .when('/thankyou', {
+          // controller: 'PaymentsController',
+          templateUrl: 'thankyou.html'
+     })
+     .when('/register', {
+          controller: 'RegisterController',
+          templateUrl: 'register.html'
      });
 });
 
@@ -111,13 +119,13 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
      // $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
      //      deliveryAddress =
      //      {
-     //           fname:     fname,
-     //           addr1:     addr1,
-     //           addr2:     addr2,
-     //           city:      city,
-     //           state:     state,
-     //           zip:       zip,
-     //           delDate:   delDate
+     // fname:     fname,
+     // addr1:     addr1,
+     // addr2:     addr2,
+     // city:      city,
+     // state:     state,
+     // zip:       zip,
+     // delDate:   delDate
      //      };
 
      console.log('should now be directed to the thankyou page...');
@@ -126,10 +134,66 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
      $scope.pkgAndOpt = pkgAndOpt;
      console.log($scope.deliveryAddress);
 
-     $http.post(API + '/thankyou')                             /* should this be here? */
-     .success(function(data) {
-          $scope.deliveryTypes = data;
-          console.log($scope.deliveryTypes);
-     });
+     /* $http.post('/someUrl', data, config).then(successCallback, errorCallback); */
+
+
+     var data =
+     {
+          "token": "CKmmcsd9foYJbOl32vNu0Y1xKsRiaJsqt3HmhDXvm8ZKF66laUSJhZFEnphDYGXN",
+          "order": {
+               "options": {
+                    "grind": pkgAndOpt.grindType,
+                    "quantity": pkgAndOpt.qtyInPounds
+               },
+               "address": {
+                    name: deliveryAddress.fname,
+                    address: deliveryAddress.addr1,
+                    address2: deliveryAddress.addr2,
+                    city: deliveryAddress.city,
+                    state: deliveryAddress.state,
+                    zipCode: deliveryAddress.zip,
+                    deliveryDate: deliveryAddress.delDate
+               }
+          },
+          "stripeToken": "ETSDNF7249L8G09CIPLXCHIGCDG89CHPG"
+     };
+     console.log(data);
+     $scope.makePayment = function(){
+          $http.post(API + '/orders', data)
+          .success(function(data) {
+               console.log("OK hooray!");
+               console.log(data);
+               console.log('should now be directed to thank page...');
+               $location.path('/thankyou');
+          });
+     };
+});
+
+
+myApp.controller("RegisterController", function($scope, $http, $location){
+
+     $scope.registerUser = function() {
+          var data =
+          {
+               "_id": $scope.userName,
+               "password": $scope.password,
+               "confirmPassword": $scope.confirmPassword,
+               "email": $scope.email
+          };
+          // console.log('marker0003');
+          // console.log(data);
+
+          $http.post(API + '/signup', data)
+          .success(function(data) {
+               console.log("in signup function...");
+               console.log(data);
+          })
+          .error(function (errorData, status) {
+               console.log('user already taken?');
+               console.log(errorData);
+               console.log('test...' + status);
+          });
+     };
+
 
 });
