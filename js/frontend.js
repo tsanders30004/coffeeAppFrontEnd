@@ -21,6 +21,18 @@ var deliveryAddress = {
 
 var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 
+myApp.run(function($rootScope, $location, $cookies) {
+     $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
+          console.log('currentUrl = ' + currentUrl);
+          console.log('nextUrl = ' + nextUrl);
+
+
+          var partialUrl = nextUrl.slice(nextUrl.indexOf("#")+1);
+          console.log('partial url = ' + partialUrl);
+
+     });
+});
+
 myApp.config(function($routeProvider) {
      $routeProvider
      .when('/', {
