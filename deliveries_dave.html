@@ -1,0 +1,44 @@
+<h2>Delivery</h2>
+<h3 class="text-center">Please enter your shipping information</h3>
+​
+<!-- //Begin Form fields -->
+<div class="row">
+     <div class="col-md-12">
+          <!-- ng-submit must be added to the 'form' tag to encapsulate all the fields to be bound -->
+          <form id="delivery-form" ng-submit="deliverySubmit()">
+               <fieldset class="form-group">
+                    <label for="formInput">Full Name</label>
+                    ​
+                    <!-- *Note: every field must be additionally bound by its own ng-model -->
+                    <input type="text" class="form-control"  placeholder="Full Name" ng-model="fullname">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">Address Line 1</label>
+                    <input type="text" class="form-control"  placeholder="Address Line 1" ng-model="address1">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">Address Line 2</label>
+                    <input type="text" class="form-control"  placeholder="Address Line 2" ng-model="address2">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">City</label>
+                    <input type="text" class="form-control" placeholder="City" ng-model="city">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">State</label>
+                    <input type="text" class="form-control" placeholder="State" ng-model="state">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">Zip Code</label>
+                    <input type="text" class="form-control"  placeholder="Zip Code" ng-model="zipCode">
+               </fieldset>
+               <fieldset class="form-group">
+                    <label for="formInput">Delivery Date</label>
+                    <input type="text" class="form-control" placeholder="Delivery Date" ng-model="deliveryDate">
+               </fieldset>
+               <button type="button" class="btn btn-success">Submit</button>
+          </form>
+     </div>
+     ​
+</div>
+<!-- This last div closes the form field -->
