@@ -74,17 +74,21 @@ myApp.controller("OptionsController", function($scope, $http, $location){
 });
 
 myApp.controller("DeliveriesController", function($scope, $http, $location){
-     $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
+     // $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
+     $scope.goPayment = function(){
           deliveryAddress =
           {
-               fname:     fname,
-               addr1:     addr1,
-               addr2:     addr2,
-               city:      city,
-               state:     state,
-               zip:       zip,
-               delDate:   delDate
+               fname:     $scope.deliveryFullName,
+               addr1:     $scope.deliveryAddr1,
+               addr2:     $scope.deliveryAddr2,
+               city:      $scope.deliveryCity,
+               state:     $scope.deliveryState,
+               zip:       $scope.deliveryZip,
+               delDate:   $scope.deliveryDate
           };
+          console.log('marker 001');
+          console.log($scope.deliveryFullName);
+          $scope.deliveryAddress = deliveryAddress;
 
           console.log(deliveryAddress);
           console.log('should now be directed to payments page...');
