@@ -221,14 +221,16 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
      $scope.makePayment = function(){
           $http.post(API + '/orders', data)
           .success(function(data) {
-               // console.log("OK hooray!");
-               // console.log(data);
+               console.log("OK hooray!");
+               console.log(data);
                // console.log('should now be directed to thank page...');
                $location.path('/thankyou');
           });
 
           /* implement stripe functionality */
-          var amount = 999;
+          // var amount = 999;
+          var amount = $scope.pkgAndOpt.qtyInPounds * $scope.pkgAndOpt.costPerPound * 100;
+          console.log('amount = ' + amount);
           var handler = StripeCheckout.configure({
                // my testing public publishable key
                key: 'pk_test_gueNUYd91f9K8pegsWsTk0gb',
@@ -267,7 +269,17 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
 
                     console.log('before credit card http call, data = ' + data);
                     $http.post(API + '/charge', data)
-                    .then(function(successData){console.log(successData);}, function(errorData){console.log(errorData);});
+                    .then(
+                         function(response){
+                              console.log('success');
+                              console.log(response);
+                         },
+                         function(response){
+                              /* this is not being executed when a credit card is declined - for example... */
+                              console.log('failure');
+                              console.log(response);
+                         }
+                    );
                }
           });
           // open the handler - this will open a dialog
