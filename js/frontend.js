@@ -175,7 +175,7 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
 });
 
 /* start the payment controller here... */
-myApp.controller("PaymentsController", function($scope, $http, $location){      /* do I really need $location? */
+myApp.controller("PaymentsController", function($scope, $http, $location, $cookies){      /* do I really need $location? */
      // $scope.goPayment = function(fname, addr1, addr2, city, state, zip, delDate){
      //      deliveryAddress =
      //      {
@@ -199,7 +199,7 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
 
      var data =
      {
-          "token": "CKmmcsd9foYJbOl32vNu0Y1xKsRiaJsqt3HmhDXvm8ZKF66laUSJhZFEnphDYGXN",
+          "token": $cookies.get("coffeeAppLoginToken"),
           "order": {
                "options": {
                     "grind": pkgAndOpt.grindType,
@@ -218,14 +218,12 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
           "stripeToken": "ETSDNF7249L8G09CIPLXCHIGCDG89CHPG"
      };
      // console.log(data);
+
+
+
+
      $scope.makePayment = function(){
-          $http.post(API + '/orders', data)
-          .success(function(data) {
-               console.log("OK hooray!");
-               console.log(data);
-               // console.log('should now be directed to thank page...');
-               $location.path('/thankyou');
-          });
+
 
           /* implement stripe functionality */
           // var amount = 999;
@@ -241,31 +239,10 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
                     // This is the token representing the validated credit card
                     var tokenId = token.id;
 
-
-                    // $.ajax({
-                    //      url: 'http://localhost:3000/charge',
-                    //      method: 'POST',
-                    //      data: {
-                    //           amount: amount,
-                    //           token: tokenId
-                    //      }
-                    // }).then(function(data) {
-                    //      console.log('Charge:', data);
-                    //      alert('You were charged $' + (data.charge.amount / 100));
-                    // });
-
-                    data = {
-                              amount: amount,
-                              token: tokenId
-                    };
-                    //
-                    // $http.post(API + '/charge', data)
-                    // .success(function(data) {
-                    //      // $scope.deliveryTypes = data;
-                    //      // console.log($scope.deliveryTypes);
-                    //      console.log('data from stripe = ' + data)
-                    // });
-
+                    // data = {
+                    //      amount: amount,
+                    //      token: tokenId
+                    // };
 
                     console.log('before credit card http call, data = ' + data);
                     $http.post(API + '/charge', data)
@@ -273,6 +250,13 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
                          function(response){
                               console.log('success');
                               console.log(response);
+                              $http.post(API + '/orders', data)
+                              .success(function(data) {
+                                   console.log("OK hooray!");
+                                   console.log(data);
+                                   // console.log('should now be directed to thank page...');
+                                   $location.path('/thankyou');
+                              });
                          },
                          function(response){
                               /* this is not being executed when a credit card is declined - for example... */
