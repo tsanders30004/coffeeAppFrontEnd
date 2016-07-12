@@ -24,8 +24,8 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 myApp.run(function($rootScope, $location, $cookies) {
      $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
 
-          console.log('currentUrl = ' + currentUrl);
-          console.log('nextUrl = ' + nextUrl);
+          // console.log('currentUrl = ' + currentUrl);
+          // console.log('nextUrl = ' + nextUrl);
 
           var partialUrl = nextUrl.slice(nextUrl.indexOf("#")+1);
 
@@ -35,14 +35,14 @@ myApp.run(function($rootScope, $location, $cookies) {
                // console.log('is there a cookie?');
                var cookies = $cookies.get('coffeeAppLoginToken');
                // console.log("cookie will be 'undefined' if there is no cookie; i.e., if the user has not logged in");
-               console.log('cookie = ' + cookies);
+               // console.log('cookie = ' + cookies);
 
                if (cookies !== undefined) {
                     // console.log('user is logged in');
-                    console.log('page to go to = ' + $cookies.get(partialUrl));
+                    // console.log('page to go to = ' + $cookies.get(partialUrl));
                     $location.path($cookies.get(partialUrl));
                } else {
-                    console.log('user is not logged in');
+                    // console.log('user is not logged in');
                     $location.path('/login');
                }
 
@@ -131,7 +131,7 @@ myApp.controller("OptionsController", function($scope, $http, $location){
           } else {
                console.log('unknown error occured.  unknown if individual or family option was chosen');
           }
-          console.log(pkgAndOpt);
+          // console.log(pkgAndOpt);
           // console.log('should now be directed to delivery page...');
           $location.path('/deliveries');
      };
@@ -223,9 +223,62 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
           .success(function(data) {
                // console.log("OK hooray!");
                // console.log(data);
-               console.log('should now be directed to thank page...');
+               // console.log('should now be directed to thank page...');
                $location.path('/thankyou');
           });
+
+          /* implement stripe functionality */
+          var amount = 999;
+          var handler = StripeCheckout.configure({
+               // my testing public publishable key
+               key: 'pk_test_gueNUYd91f9K8pegsWsTk0gb',
+               locale: 'auto',
+               // once the credit card is validated, this function will be called
+               token: function(token) {
+                    // Make the request to the backend to actually make a charge
+                    // This is the token representing the validated credit card
+                    var tokenId = token.id;
+
+
+                    // $.ajax({
+                    //      url: 'http://localhost:3000/charge',
+                    //      method: 'POST',
+                    //      data: {
+                    //           amount: amount,
+                    //           token: tokenId
+                    //      }
+                    // }).then(function(data) {
+                    //      console.log('Charge:', data);
+                    //      alert('You were charged $' + (data.charge.amount / 100));
+                    // });
+
+                    data = {
+                              amount: amount,
+                              token: tokenId
+                    };
+                    //
+                    // $http.post(API + '/charge', data)
+                    // .success(function(data) {
+                    //      // $scope.deliveryTypes = data;
+                    //      // console.log($scope.deliveryTypes);
+                    //      console.log('data from stripe = ' + data)
+                    // });
+
+
+                    console.log('before credit card http call, data = ' + data);
+                    $http.post(API + '/charge', data)
+                    .then(function(successData){console.log(successData);}, function(errorData){console.log(errorData);});
+               }
+          });
+          // open the handler - this will open a dialog
+          // with a form with it to prompt for credit card
+          // information from the user
+          handler.open({
+               name: 'DC Coffee Store',
+               description: 'Paying for coffee',
+               amount: amount
+          });
+          /* end of stripe */
      };
 });
 
@@ -245,17 +298,17 @@ myApp.controller("RegisterController", function($scope, $http, $location){
 
           $http.post(API + '/signup', data)
           .success(function(data) {
-               console.log("in signup function...");
-               console.log(data);
+               // console.log("in signup function...");
+               // console.log(data);
                $scope.loginStatus = true;
-               console.log($scope.loginStatus);
+               // console.log($scope.loginStatus);
           })
           .error(function (errorData, status) {
-               console.log('user already taken?');
-               console.log(errorData);
-               console.log('test...' + status);
+               // console.log('user already taken?');
+               // console.log(errorData);
+               // console.log('test...' + status);
                $scope.loginStatus = false;
-               console.log($scope.loginStatus);
+               // console.log($scope.loginStatus);
           });
      };
 
@@ -270,22 +323,22 @@ myApp.controller("LoginController", function($scope, $cookies, $http, $location)
                "_id": $scope.userName,
                "password": $scope.password,
           };
-          console.log(data);
+          // console.log(data);
           $http.post(API + '/login', data)
           .success(function(data) {
-               console.log(data);
-               console.log('should be creating a cookie now...');
+               // console.log(data);
+               // console.log('should be creating a cookie now...');
                $cookies.put('coffeeAppLoginToken', data.token);
 
                /* redirect user to page from whence he came */
-               console.log('about to be redirected after logging in');
+               // console.log('about to be redirected after logging in');
                debugger;
 
                $location.path($cookies.get('partialUrl'));
           })
           .error(function (errorData, status) {
-               console.log(errorData);
-               console.log('test...' + status);
+               // console.log(errorData);
+               // console.log('test...' + status);
           });
      };
 
