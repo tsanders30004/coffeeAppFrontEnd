@@ -23,12 +23,56 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngCookies']);
 
 myApp.run(function($rootScope, $location, $cookies) {
      $rootScope.$on('$locationChangeStart', function(event, nextUrl, currentUrl) {
+
           console.log('currentUrl = ' + currentUrl);
           console.log('nextUrl = ' + nextUrl);
 
-
           var partialUrl = nextUrl.slice(nextUrl.indexOf("#")+1);
-          console.log('partial url = ' + partialUrl);
+
+          if (partialUrl === '/options' || partialUrl === '/deliveries' || partialUrl === '/payments') {
+               // console.log('we have reached one of the pages which must be authenticated');
+               // console.log('partial url = ' + partialUrl);
+               // console.log('is there a cookie?');
+               var cookies = $cookies.get('coffeeAppLoginToken');
+               // console.log("cookie will be 'undefined' if there is no cookie; i.e., if the user has not logged in");
+               console.log('cookie = ' + cookies);
+
+               if (cookies !== undefined) {
+                    // console.log('user is logged in');
+                    console.log('page to go to = ' + $cookies.get(partialUrl));
+                    $location.path($cookies.get(partialUrl));
+               } else {
+                    console.log('user is not logged in');
+                    $location.path('/login');
+               }
+
+               /* save the location of the page which the user was trying to access when he was redirected to the login page */
+               $cookies.put('partialUrl', partialUrl);
+               // console.log('need to be re-directed to ' + partialUrl);
+               // console.log('currentUrl = ' + currentUrl);
+
+               /* if user is logged in, re-direct to the requested page.  if not, reroute to login page. */
+               // if (cookies !== undefined) {
+               //
+               //
+               //      /* need to redirect user the the correct page here... */
+               //      if (partialUrl === '/options') {
+               //           $location.path('/options');
+               //      } else if (partialUrl === '/deliveries') {
+               //           $location.path('/deliveries');
+               //      } else if (partialUrl === '/payments') {
+               //           $location.path('/payments');
+               //      } else {
+               //           console.log('there is some kind of error...  page direction was for a page that should require authentication');
+               //           console.log('page name = ' + partialUrl);
+               //      }
+               // } else {
+               //      /* user must not be logged in.  redirect to login page. */
+               //      $location.path('/login');
+               // }
+          }
+
+
 
      });
 });
@@ -75,27 +119,27 @@ myApp.controller('MainController', function($scope, $http){    /* not sure if ro
 
 myApp.controller("OptionsController", function($scope, $http, $location){
      $scope.goDelivery = function(packageType, optionChosen) {
-          console.log('the ' + optionChosen + ' was chosen');
+          // console.log('the ' + optionChosen + ' was chosen');
           if(packageType === 'individual') {
-               console.log('the individual option was chosen');
+               // console.log('the individual option was chosen');
                pkgAndOpt.package = packageType;
                pkgAndOpt.grindType = optionChosen;
           } else if(packageType === 'family') {
-               console.log('the family option was chosen');
+               // console.log('the family option was chosen');
                pkgAndOpt.package = packageType;
                pkgAndOpt.grindType = optionChosen;
           } else {
                console.log('unknown error occured.  unknown if individual or family option was chosen');
           }
           console.log(pkgAndOpt);
-          console.log('should now be directed to delivery page...');
+          // console.log('should now be directed to delivery page...');
           $location.path('/deliveries');
      };
      $http.get(API + '/options')
      .success(function(data) {
-          console.log("Connected to backend from frontend using http request");
+          // console.log("Connected to backend from frontend using http request");
           $scope.grindTypes = data;
-          console.log($scope.grindTypes);
+          // console.log($scope.grindTypes);
      });
 });
 
@@ -112,12 +156,12 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
                zip:       $scope.deliveryZip,
                delDate:   $scope.deliveryDate
           };
-          console.log('marker 001');
-          console.log($scope.deliveryFullName);
+          // console.log('marker 001');
+          // console.log($scope.deliveryFullName);
           $scope.deliveryAddress = deliveryAddress;
 
-          console.log(deliveryAddress);
-          console.log('should now be directed to payments page...');
+          // console.log(deliveryAddress);
+          // console.log('should now be directed to payments page...');
           $location.path('/payments');
 
      };
@@ -125,7 +169,7 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
      $http.post(API + '/deliveries')                             /* should this be here? */
      .success(function(data) {
           $scope.deliveryTypes = data;
-          console.log($scope.deliveryTypes);
+          // console.log($scope.deliveryTypes);
      });
 
 });
@@ -144,11 +188,11 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
      // delDate:   delDate
      //      };
 
-     console.log('should now be directed to the thankyou page...');
+     // console.log('should now be directed to the thankyou page...');
      // $location.path('/payments');
      $scope.deliveryAddress = deliveryAddress;
      $scope.pkgAndOpt = pkgAndOpt;
-     console.log($scope.deliveryAddress);
+     // console.log($scope.deliveryAddress);
 
      /* $http.post('/someUrl', data, config).then(successCallback, errorCallback); */
 
@@ -173,12 +217,12 @@ myApp.controller("PaymentsController", function($scope, $http, $location){      
           },
           "stripeToken": "ETSDNF7249L8G09CIPLXCHIGCDG89CHPG"
      };
-     console.log(data);
+     // console.log(data);
      $scope.makePayment = function(){
           $http.post(API + '/orders', data)
           .success(function(data) {
-               console.log("OK hooray!");
-               console.log(data);
+               // console.log("OK hooray!");
+               // console.log(data);
                console.log('should now be directed to thank page...');
                $location.path('/thankyou');
           });
@@ -230,8 +274,14 @@ myApp.controller("LoginController", function($scope, $cookies, $http, $location)
           $http.post(API + '/login', data)
           .success(function(data) {
                console.log(data);
-               $cookies.put('token', data.token);
-               $location.path("/");
+               console.log('should be creating a cookie now...');
+               $cookies.put('coffeeAppLoginToken', data.token);
+
+               /* redirect user to page from whence he came */
+               console.log('about to be redirected after logging in');
+               debugger;
+
+               $location.path($cookies.get('partialUrl'));
           })
           .error(function (errorData, status) {
                console.log(errorData);
