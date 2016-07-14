@@ -88,10 +88,7 @@ myApp.controller("OptionsController", function($scope, $http, $location){
           }
           $location.path('/deliveries');
      };
-     // $http.get(API + '/options')
-     // .success(function(data) {
-     //      $scope.grindTypes = data;
-     // });
+
      $http.get(API + '/options')
      .then(
           function(response){    /* success */
@@ -123,10 +120,6 @@ myApp.controller("DeliveriesController", function($scope, $http, $location){
           $location.path('/payments');
      };
 
-     // $http.post(API + '/deliveries')
-     // .success(function(data) {
-     //      $scope.deliveryTypes = data;
-     // });
      $http.post(API + '/deliveries')
      .then(
           function(response){
@@ -205,8 +198,8 @@ myApp.controller("PaymentsController", function($scope, $http, $location, $cooki
           });
 
           handler.open({
-               name: 'DC Coffee Store',
-               description: 'Paying for coffee',
+               name: 'Web Caffeine',
+               description: 'Online Coffee Charges:  Web Caffeine',
                amount: amount
           });
      };
@@ -225,12 +218,20 @@ myApp.controller("RegisterController", function($scope, $http, $location){
           };
 
           $http.post(API + '/signup', data)
-          .success(function(data) {
-               $scope.loginStatus = true;
-          })
-          .error(function (errorData, status) {
-               $scope.loginStatus = false;
-          });
+          .then(
+               function(response){
+                    $scope.loginStatus = true;
+                    console.log('RegisterController');
+                    console.log(response.status);
+                    console.log(response.statusText);
+               },
+               function(response){
+                    $scope.loginStatus = false;
+                    console.log('There was an an error in the $HTTP call in the RegisterController.');
+                    console.log(response.status);
+                    console.log(response.statusText);
+               }
+          );
      };
 });
 
@@ -243,14 +244,21 @@ myApp.controller("LoginController", function($scope, $cookies, $http, $location)
                "_id": $scope.userName,
                "password": $scope.password,
           };
+
           $http.post(API + '/login', data)
-          .success(function(data) {
-               $cookies.put('coffeeAppLoginToken', data.token);
-               $location.path($cookies.get('partialUrl'));
-          })
-          .error(function (errorData, status) {
-               // console.log(errorData);
-               // console.log('test...' + status);
-          });
+          .then(
+               function(response){
+                    $cookies.put('coffeeAppLoginToken', data.token);
+                    $location.path($cookies.get('partialUrl'));
+                    console.log('LoginController');
+                    console.log(response.status);
+                    console.log(response.statusText);
+               },
+               function(response){
+                    console.log('There was an an error in the $HTTP call in the LoginController.');
+                    console.log(response.status);
+                    console.log(response.statusText);
+               }
+          );
      };
 });
