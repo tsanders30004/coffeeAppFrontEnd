@@ -1,5 +1,6 @@
 body {
      font-family: Verdana;
+     box-sizing: border-box;
 }
 #navigation {
      background-color: #808080;
@@ -39,23 +40,19 @@ body {
 #step2, #get_started {
      background-color: #EDEBE6;
      color: black;
+     padding-left: 2em;
+     padding-right: 2em;
 }
 #step3 {
      background-image: url(../images/cup-steam.jpg);
      color: white;
-     /*background-position: center center;
-     background-repeat:no-repeat;*/
-
-
 }
 #grower {
-     width: 100%;
+     width: 80%;
      border: 1em solid white;
-     -ms-transform: rotate(-12deg); /* IE 9 */
-     -webkit-transform: rotate(-12deg); /* Safari */
-     transform: rotate(-12deg);
-     margin-bottom: 20%;
-     margin-left: 15%;
+     -ms-transform: rotate(-10deg);
+     -webkit-transform: rotate(-10deg);
+     transform: rotate(-10deg);
 }
 
 /* styling for text on main page */
@@ -79,4 +76,38 @@ border: 1px solid black;
 
 .fit-image{
      width: 100%;
+}
+
+.pkg_photo {
+     border:  1.25em solid #DBD4AB;
+     border-radius: .5em;
+     box-shadow:3px 3px 10px 3px #DEDEDE;
+}
+
+.padding_3 {
+     padding: 3em;
+}
+.nav_text {
+     color: #B6AC5C;
+     /*font-weight: bold;*/
+     font-size: 1.25em;
+     padding-top: 0;
+     padding-bottom: 0;
+}
+.nav_text:hover {
+     color: #7a733e;
+}
+.text_green{
+     color:    #B6AC5C;
+}
+.text_cream{
+     color:    #DBD4AC;
+}
+.text_rust{
+     color:    #C17C08;
+}
+.order_table{
+     /*font-weight: 500;*/
+     font-family: "Ubuntu Mono";
+     font-size: 1.2em;
 }

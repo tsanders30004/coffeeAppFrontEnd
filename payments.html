@@ -1,143 +1,43 @@
-<div class="row">
-     <div class="col-sm-12">
-          <h1>Payment</h1>
+
+
+
+
+
+
+<div class="row padding_3">
+     <div class="col-md-2">
+          &nbsp;
+     </div>
+     <div class="col-md-4">
+          <h3 class="text_rust">Shipping</h3>
+          <table class="table table-bordered table-striped table-condensed">
+               <tr><td class="order_table">Frequency of Delivery:</td><td>Weekly</td></tr>
+               <tr><td class="order_table">Full Name:</td><td>{{deliveryAddress.fname}}</td></tr>
+               <tr><td class="order_table">Address:</td><td>{{deliveryAddress.addr1}}<br>{{deliveryAddress.addr2}}</td></tr>
+               <tr><td class="order_table">City, State Zip:</td><td>{{deliveryAddress.city}}, {{deliveryAddress.state}} {{deliveryAddress.zip}}</td></tr>
+               <tr><td class="order_table">Delivery Date:</td><td>{{deliveryAddress.delDate}}</td></tr>
+          </table>
+     </div>
+     <div class="col-md-4">
+          <h3 class="text_rust">Order Review</h3>
+          <table class="table table-bordered table-striped table-condensed">
+               <tr><td class="order_table">Grind:</td><td>{{pkgAndOpt.grindType}}</td></tr>
+               <tr><td class="order_table">Weight (pounds):</td><td>{{pkgAndOpt.qtyInPounds}}</td></tr>
+               <tr><td class="order_table">Quantity:</td><td>{{pkgAndOpt.qtyInPounds}} X ${{pkgAndOpt.costPerPound}} = ${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</td></tr>
+               <tr><td class="order_table">Shipping:</td><td>FREE!</td></tr>
+               <tr><td class="order_table">Total:</td><td>${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</td></tr>
+          </table>
+     </div>
+     <div class="col-md-2">
+          &nbsp;
      </div>
 </div>
-
 <div class="row">
-     <div class="col-sm-6">
-          <p>Grind</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{pkgAndOpt.grindType}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Frequency of Delivery</p>
-     </div>
-     <div class="col-sm-6">
-          <p>Weekly</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Coffee in Pounds</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{pkgAndOpt.qtyInPounds}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-12">
-          <h1>Delivery Information</h1>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Full Name</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.fname}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Address Line 1</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.addr1}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Address Line 2</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.addr2}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>City</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.city}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>State</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.state}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Zip Code</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.zip}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Delivery Date</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{deliveryAddress.delDate}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-12">
-          <h1>Current Charge</h1>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Quantity</p>
-     </div>
-     <div class="col-sm-6">
-          <p>{{pkgAndOpt.qtyInPounds}} X ${{pkgAndOpt.costPerPound}} = ${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Shipping</p>
-     </div>
-     <div class="col-sm-6">
-          <p>FREE!</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <p>Total</p>
-     </div>
-     <div class="col-sm-6">
-          <p>${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</p>
-     </div>
-</div>
-
-<div class="row">
-     <div class="col-sm-6">
-          <button ng-click = "makePayment()" class="btn succcess">Pay with Credit Card</button>&nbsp;<button class="btn">Cancel</button>
-     </div>
-     <div class="col-sm-6">
-          <p>&nbsp;</p>
+     <div class="col-md-12">
+          <p class="center_text">
+               <button ng-click = "makePayment()" class="btn btn-success">Place Your Order</button>
+               &nbsp;
+               <button class="btn btn-danger">Cancel</button>
+          </p>
      </div>
 </div>
