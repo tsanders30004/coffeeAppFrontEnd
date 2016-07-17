@@ -1,13 +1,6 @@
-Kafeïne Coffee E-Commerce Application
-=====================================
+# Kafeïne Coffee E-Commerce Application
 
-Overview
---------
-this is a text
+## Overview
 
+## Technologies
 
-# One Pound
-
-## Two Pound
-
-### Three Pound
