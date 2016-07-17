@@ -16,6 +16,9 @@ body {
 .center_text {
      text-align: center;
 }
+.right_text {
+     text-align: right;
+}
 #coffeecup {
      background-image: url('../images/coffee.jpg');
      background-size: cover;
@@ -87,6 +90,11 @@ border: 1px solid black;
 .padding_3 {
      padding: 3em;
 }
+.padding_login {
+     padding-top: 0.25em;
+     padding-bottom: 0.25em;
+     padding-right: 1em;
+}
 .nav_text {
      color: #B6AC5C;
      /*font-weight: bold;*/
@@ -110,4 +118,15 @@ border: 1px solid black;
      /*font-weight: 500;*/
      font-family: "Ubuntu Mono";
      font-size: 1.2em;
+}
+.background_cream{
+     background-color: #DBD4AB;
+}
+.width_100 {
+     width: 100%;
+}
+#reg_box{
+     border:  0.5em solid #948f74;
+     border-radius: .5em;
+     box-shadow:5px 5px 5px #DEDEDE;
 }

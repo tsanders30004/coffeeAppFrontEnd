@@ -221,14 +221,12 @@ myApp.controller("OptionsController", function($scope, $http, $location){
                .then(
                     function(response){
                          $scope.loginStatus = true;
-                         $scope.loginMessage = 'Please Log In';
                          console.log('RegisterController');
                          console.log(response.status);
                          console.log(response.statusText);
                     },
                     function(response){
                          $scope.loginStatus = false;
-                         $scope.loginMessage = 'User Already Exists';
                          console.log('There was an an error in the $HTTP call in the RegisterController.');
                          console.log(response.status);
                          console.log(response.statusText);
