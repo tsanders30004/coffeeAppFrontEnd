@@ -1,0 +1,47 @@
+<div class="row padding_3">
+
+     <div class="col-sm-4">
+          &nbsp;
+     </div>
+
+     <div class="col-sm-4 background_cream" id="reg_box">
+          <h3 class="text_rust center_text">Registration</h3>
+          <div class="login_box">
+               <p class="padding_login">Username:</p>
+               <input class="width_100" type="text" name="userName" value = "Username" ng-model="userName">
+          </div>
+          <div class="login_box">
+               <p class="padding_login">Password:</p>
+               <input class="width_100" type="password" name="password" value="Password" ng-model="password">
+          </div>
+
+          <div ng-show="loginStatus == null || loginStatus == false">
+               <br>
+               <p><button ng-click = "registerUser()" class="btn btn-success">Register User</button></p>
+          </div>
+
+          <div class="login_box">
+               <a ng-show="loginStatus" href="/#login">
+                    <br>
+                    <button class="btn btn-success">
+                         {{loginMessage}}
+                    </button>
+                    <br>
+                    <br>
+               </a>
+
+               <a ng-show="loginStatus === false" href="/#login">
+                    <br>
+                    <button class="btn btn-danger">
+                         {{loginMessage}}
+                    </button>
+                    <br>
+                    <br>
+               </a>
+          </div>
+     </div>
+
+     <div class="col-sm-4">
+          &nbsp;
+     </div>
+</div>

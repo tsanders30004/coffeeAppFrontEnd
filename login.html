@@ -1,31 +1,36 @@
 <div class="row padding_3">
-     <div class="col-sm-12">
-          <h3 class="text_rust">Sign Into Your Account</h3>
-          <table>
-               <tr>
-                    <td>
-                         <p class="padding_login">Username:</p>
-                    </td>
-                    <td>
-                         <input type="text" placeholder="Username" ng-model="userName">
-                    </td>
-               </tr>
-               <tr>
-                    <td>
-                         <p class="padding_login">Password:</p>
-                    </td>
-                    <td>
-                         <input type="password" name="password" ng-model="password">
-                    </td>
-               </tr>
-               <tr>
-                    <td>
-                         &nbsp;
-                    </td>
-                    <td>
-                         <p class="right_text"><button class="btn btn-success" ng-click="loginUser()" >Login</button></p>
-                    </td>
-               </tr>
-          </table>
+
+     <div class="col-sm-4">
+          &nbsp;
      </div>
+
+     <div class="col-sm-4 background_cream" id="reg_box">
+          <h3 class="text_rust">Please Login</h3>
+          <div class="login_box">
+               <p class="padding_login">Username:</p>
+               <input type="text" placeholder="Username" ng-model="userName">
+          </div>
+
+          <div class="login_box">
+               <p class="padding_login">Password:</p>
+               <input type="password" name="password" ng-model="password">
+          </div>
+
+          <div class="login_box">
+               <br>
+               <p>
+                    <button class="btn btn-success" ng-click="loginUser()">Login</button>
+               </p>
+          </div>
+
+          <div class="col-sm-4">
+               &nbsp;
+          </div>
+
+     </div>
+
+     <div class="col-sm-4">
+          &nbsp;
+     </div>
+
 </div>

@@ -1,16 +1,10 @@
-
-
-
-
-
-
 <div class="row padding_3">
      <div class="col-md-2">
           &nbsp;
      </div>
      <div class="col-md-4">
           <h3 class="text_rust">Shipping</h3>
-          <table class="table table-bordered table-striped table-condensed">
+          <table class="table table-bordered table-striped table-condensed table_border">
                <tr><td class="order_table">Frequency of Delivery:</td><td>Weekly</td></tr>
                <tr><td class="order_table">Full Name:</td><td>{{deliveryAddress.fname}}</td></tr>
                <tr><td class="order_table">Address:</td><td>{{deliveryAddress.addr1}}<br>{{deliveryAddress.addr2}}</td></tr>
@@ -20,7 +14,7 @@
      </div>
      <div class="col-md-4">
           <h3 class="text_rust">Order Review</h3>
-          <table class="table table-bordered table-striped table-condensed">
+          <table class="table table-bordered table-striped table-condensed table_border">
                <tr><td class="order_table">Grind:</td><td>{{pkgAndOpt.grindType}}</td></tr>
                <tr><td class="order_table">Weight (pounds):</td><td>{{pkgAndOpt.qtyInPounds}}</td></tr>
                <tr><td class="order_table">Quantity:</td><td>{{pkgAndOpt.qtyInPounds}} X ${{pkgAndOpt.costPerPound}} = ${{pkgAndOpt.qtyInPounds * pkgAndOpt.costPerPound}}</td></tr>

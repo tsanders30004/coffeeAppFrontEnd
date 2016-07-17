@@ -246,22 +246,15 @@ myApp.controller("OptionsController", function($scope, $http, $location){
                     "_id": $scope.userName,
                     "password": $scope.password,
                };
-               // console.log(data);
+               $logStatus2 = '';
                $http.post(API + '/login', data)
                .success(function(data) {
-                    // console.log(data);
-                    // console.log('should be creating a cookie now...');
                     $cookies.put('coffeeAppLoginToken', data.token);
-
-                    /* redirect user to page from whence he came */
-                    // console.log('about to be redirected after logging in');
-                    debugger;
-
                     $location.path($cookies.get('partialUrl'));
                })
                .error(function (errorData, status) {
-                    // console.log(errorData);
-                    // console.log('test...' + status);
+                    console.log(errorData);
+                    console.log('test...' + status);
                });
           };
      });

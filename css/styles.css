@@ -20,7 +20,7 @@ body {
      text-align: right;
 }
 #coffeecup {
-     background-image: url('../images/coffee.jpg');
+     background-image: url('../images/coffee3.jpg');
      background-size: cover;
      background-position: 80% 75%;
      min-height: 450px;
@@ -29,8 +29,8 @@ body {
 #slogan {
      padding-top: 10%;
      padding-bottom: 10%;
-     /*position: relative;
-     margin-top: -25%;*/
+     float: right;
+     /*color: white;*/
 }
 .steps {
      padding-top: 7.5%;
@@ -38,31 +38,37 @@ body {
 }
 #step1 {
      background-image: url(../images/coffee-bags.jpg);
-     color: white;
 }
 #step2, #get_started {
-     background-color: #EDEBE6;
-     color: black;
+     background-color: #F5DEB3;
+     color: #8B4513;
      padding-left: 2em;
      padding-right: 2em;
 }
 #step3 {
-     background-image: url(../images/cup-steam.jpg);
-     color: white;
+     background-image: url(../images/coffee6.jpg);
 }
 #grower {
      width: 80%;
-     border: 1em solid white;
+     border: 1em solid #CD853F;
      -ms-transform: rotate(-10deg);
      -webkit-transform: rotate(-10deg);
      transform: rotate(-10deg);
 }
 
 /* styling for text on main page */
+ol {
+     list-style-type: none;
+}
 ol li ul li {
+     /*list-style-type: none;
+     padding-bottom: 0.5em;
+     text-indent: -3em;*/
+
      list-style-type: none;
      padding-bottom: 0.5em;
-     text-indent: -3em;
+     text-indent: -2.3em;
+     font-size: 1.25em;
 }
 #our_story {
      padding-top: 5%;
@@ -73,9 +79,6 @@ ol li ul li {
      background-color: #1D4942;
      color: white;
 }
-/*div {
-border: 1px solid black;
-}*/
 
 .fit-image{
      width: 100%;
@@ -84,7 +87,7 @@ border: 1px solid black;
 .pkg_photo {
      border:  1.25em solid #DBD4AB;
      border-radius: .5em;
-     box-shadow:3px 3px 10px 3px #DEDEDE;
+     box-shadow:3px 3px 10px 3px tan;
 }
 
 .padding_3 {
@@ -101,9 +104,10 @@ border: 1px solid black;
      font-size: 1.25em;
      padding-top: 0;
      padding-bottom: 0;
+     font-weight: 800;
 }
 .nav_text:hover {
-     color: #7a733e;
+     color: peru;
 }
 .text_green{
      color:    #B6AC5C;
@@ -113,6 +117,16 @@ border: 1px solid black;
 }
 .text_rust{
      color:    #C17C08;
+}
+.text_italic {
+     font-style: italic;
+}
+.text_dark_cream {
+     /*color: #948f74;*/
+     color: black;
+}
+.background_cream{
+     color:    #DBD4AC;
 }
 .order_table{
      /*font-weight: 500;*/
@@ -129,4 +143,15 @@ border: 1px solid black;
      border:  0.5em solid #948f74;
      border-radius: .5em;
      box-shadow:5px 5px 5px #DEDEDE;
+}
+#how_it_works {
+     color: #8B4513	;
+     background-color: #dbd4ab;
+}
+.getting_started {
+     background-color: #CD853F;
+     color: white;
+}
+.table_border {
+     border: 3px solid peru;
 }
