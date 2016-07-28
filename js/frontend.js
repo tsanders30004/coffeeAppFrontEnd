@@ -1,6 +1,6 @@
 /* Global Variables */
 
-var API = 'http://localhost:3000';      /* for connection to backend */
+var API = 'https://coffeeapp-avxgghdvbd.now.sh';      /* for connection to backend */
 
 var pkgAndOpt = {
      package: '',
